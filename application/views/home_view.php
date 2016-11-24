@@ -51,9 +51,14 @@
              <div class="col-lg-6">
                 <h1 class="page-header">
                    <?php if($this->session->flashdata('conf'))
-                   {
-                   	 echo $this->session->flashdata('conf');
-				   }
+                   {?>
+                   	
+					
+					<div class="alert alert-info">
+						  <strong> <?php  echo $this->session->flashdata('conf');?> </strong>
+					</div>
+                   	
+				  <? }
 				   else{ ?>
 					 <p> &nbsp;</p>
 					<?php } ?>

@@ -101,11 +101,14 @@ class Home extends CI_Controller {
 		  			'password'=> md5($password), 	
 		  			 	
 			);
-			//var_dump($data);
+			
 			$result = $this->common->get_user($data);
+			//var_dump($result); die;
+			
 			//var_dump($result);
 			if(count($result) > 0){
 				 foreach ($result as $key => $value) {
+					$data['id']= $value['id']; 	
 					$data['first_name']= $value['first_name']; 	
 		  			$data['last_name']= $value['last_name']; 	
 		  			$data['email']= $value['email']; 	

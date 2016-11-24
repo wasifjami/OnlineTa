@@ -13,8 +13,12 @@ class Courses extends CI_Controller {
 	
 	public function index()
 	{
-			
-		 
+		
+		
+		$result = $this->common->getTeacherCourses();
+		
+		$data['courses'] = $result;
+			 
 		$data['view'] = "course_view"; 
 		$this->load->view('template',$data);
 	}
@@ -28,7 +32,7 @@ class Courses extends CI_Controller {
 			$courseName = $this->input->post('courseName');
 			$courseDescription = $this->input->post('courseDescription');
 			$courseTitle = $this->input->post('courseTitle');
-			$teacher_id = $_SESSION['username'];
+			$teacher_id = $_SESSION['id'];
 			$activation_code = rand(10000,99999);
 			
 			$data = array(
