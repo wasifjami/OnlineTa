@@ -24,12 +24,29 @@ class Common extends CI_Model {
 			
 		}
 		
-		
 		function save_course($data){
 	
 			if($this->db->insert('course',$data)){
 				
-				return TRUE;
+			return TRUE;
 			}
+		}
+		
+		
+		
+		
+		function getTeacherCourses(){
+	
+			
+			$result = $this->db->where('teacher_id', $_SESSION['id'])
+							   ->get('course')->result();
+				
+			if(!empty($result)){
+				//var_dump($result);
+				return $result;
+			}else{
+				return FALSE;
+			}
+			
 		}
 }

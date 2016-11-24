@@ -8,6 +8,7 @@
 
 		<div class="container">
 
+
 		 
 				<h1>
                    <?php if($this->session->flashdata('conf'))
@@ -17,9 +18,11 @@
 				   else{ ?>
 					 <p> &nbsp;</p>
 					<?php } ?>
-                   
-                 </h1>
+         
+                
 			
+			
+			<?php //var_dump($courses); die;?>
 		</div>
 	</div>
 
@@ -34,7 +37,20 @@
 	</div>
 
 	<div class="col-md-6">
-
+		
+                   <?php if($this->session->flashdata('conf'))
+                   {?>
+                   	
+                   	
+                   	
+                   	<div class="alert alert-success">
+						  <strong><?  echo $this->session->flashdata('conf'); ?></strong>
+						</div>
+                   	
+				<?   }
+				   else{ ?>
+					 <p> &nbsp;</p>
+					<?php } ?>
 		<div class="panel panel-default">
 
 			<div class="panel-heading">
@@ -62,63 +78,50 @@
 
 <div class="row">
 
-	<div class="col-lg-12">
-		<h2 class="page-header">Services Panels</h2>
+
+	<div class="col-lg-1">
 	</div>
-	<div class="col-md-3 col-sm-6">
-		<div class="panel panel-default text-center">
-			<div class="panel-heading">
-				<span class="fa-stack fa-5x"> <i class="fa fa-circle fa-stack-2x text-primary"></i> <i class="fa fa-tree fa-stack-1x fa-inverse"></i> </span>
+	<div class="col-lg-10">
+	
+			<div class="col-lg-12">
+				<h2 class="page-header">Courses:</h2>
 			</div>
-			<div class="panel-body">
-				<h4>Service One</h4>
-				<p>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-				</p>
-				<a href="#" class="btn btn-primary">Learn More</a>
+			
+			
+			
+			
+			<?php 
+			
+			if($courses != null){
+					foreach ($courses as $key => $value) {?>
+						
+					
+				
+							<div class="col-md-3 col-sm-6">
+								<div class="panel panel-default text-center">
+									<div class="panel-heading">
+										<span class="fa-stack fa-4x"> <i class="fa fa-circle fa-stack-2x text-primary"></i> <i class="fa fa-tree fa-stack-1x fa-inverse"></i> </span>
+									</div>
+									<div class="panel-body">
+										<h4><?php echo $value->course_name?></h4>
+										<h5><b><?php echo $value->course_title?></b></h5>
+										<p>
+											<?php echo $value->description?>
+										</p>
+										<a href="#" class="btn btn-primary">Enter</a>
+									</div>
+								</div>
+							</div>
+					<?}} else{ ?>
+						
+						<div class="alert alert-warning">
+						  <strong>Oops!</strong> No Courses are instructed by you!!
+						</div>
+						
+						
+		<?			}?>
+				</div>
 			</div>
-		</div>
+	
+	<div class="col-lg-1">
 	</div>
-	<div class="col-md-3 col-sm-6">
-		<div class="panel panel-default text-center">
-			<div class="panel-heading">
-				<span class="fa-stack fa-5x"> <i class="fa fa-circle fa-stack-2x text-primary"></i> <i class="fa fa-car fa-stack-1x fa-inverse"></i> </span>
-			</div>
-			<div class="panel-body">
-				<h4>Service Two</h4>
-				<p>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-				</p>
-				<a href="#" class="btn btn-primary">Learn More</a>
-			</div>
-		</div>
-	</div>
-	<div class="col-md-3 col-sm-6">
-		<div class="panel panel-default text-center">
-			<div class="panel-heading">
-				<span class="fa-stack fa-5x"> <i class="fa fa-circle fa-stack-2x text-primary"></i> <i class="fa fa-support fa-stack-1x fa-inverse"></i> </span>
-			</div>
-			<div class="panel-body">
-				<h4>Service Three</h4>
-				<p>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-				</p>
-				<a href="#" class="btn btn-primary">Learn More</a>
-			</div>
-		</div>
-	</div>
-	<div class="col-md-3 col-sm-6">
-		<div class="panel panel-default text-center">
-			<div class="panel-heading">
-				<span class="fa-stack fa-5x"> <i class="fa fa-circle fa-stack-2x text-primary"></i> <i class="fa fa-database fa-stack-1x fa-inverse"></i> </span>
-			</div>
-			<div class="panel-body">
-				<h4>Service Four</h4>
-				<p>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-				</p>
-				<a href="#" class="btn btn-primary">Learn More</a>
-			</div>
-		</div>
-	</div>
-</div>
