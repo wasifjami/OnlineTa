@@ -44,9 +44,9 @@
                 foreach ($threads as $key => $value) { ?>
                  <div class="alert alert-success">
 	                <h3><?php echo $value->subject ?></h3>
-	                 <i class="fa fa-thumbs-up" aria-hidden="true"></i>
+	                <p><?php echo $value->post?></p>
+	                 <i style="padding-top: 15px" class="fa fa-thumbs-up" aria-hidden="true"></i>
 						<?php echo $value->votes ?>
-						
 						
 	                <?php if($value->teacher_flag == 1){?>
 	                	<i class="fa fa-star" aria-hidden="true"></i>
@@ -54,8 +54,24 @@
 	                	<i class="fa fa-star-o" aria-hidden="true"></i>
 						
 				<?php 	} ?>
+					<a href=""> 
+						<i class="fa fa-comments" aria-hidden="true">All Comments</i>
+					</a>
+					<div class="row">  &nbsp;</div>
+					 <form method="post" action="<?php echo site_url('thread/')?>">
+          
+			            <div class="form-group">
+			              <label for="message-text" class="form-control-label">Comment here:</label>
+			              <textarea style="width: 50%" class="form-control"  name="question" id="message-text"></textarea>
+			            </div>
+          					<input type="submit"  name="submit" value=" Comment " class="btn btn-primary" />
+							<span style="float: right">
+								By: <a href=""> Some Name</a> <br>
+								Date: DD/MM/YYYY
+							</span>	          				
+          			</form>
+					
 	              </div>  
-	                <p><?php echo $value->post?></p>
 	            <?php } ?>
             </div>
         </div>

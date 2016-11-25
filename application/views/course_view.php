@@ -7,9 +7,6 @@
 	<div class="col-md-6" height>
 
 		<div class="container">
-
-
-		 
 				<h1>
                    <?php if($this->session->flashdata('conf'))
                    {
@@ -18,10 +15,6 @@
 				   else{ ?>
 					 <p> &nbsp;</p>
 					<?php } ?>
-         
-                
-			
-			
 			<?php //var_dump($courses); die;?>
 		</div>
 	</div>
