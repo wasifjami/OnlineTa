@@ -44,7 +44,7 @@
                    	
                    	
                    	<div class="alert alert-success">
-						  <strong><?  echo $this->session->flashdata('conf'); ?></strong>
+						  <strong><?php  echo $this->session->flashdata('conf'); ?></strong>
 						</div>
                    	
 				<?php   }
