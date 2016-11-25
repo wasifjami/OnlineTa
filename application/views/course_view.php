@@ -47,7 +47,7 @@
 						  <strong><?  echo $this->session->flashdata('conf'); ?></strong>
 						</div>
                    	
-				<?   }
+				<?php   }
 				   else{ ?>
 					 <p> &nbsp;</p>
 					<?php } ?>
@@ -112,14 +112,14 @@
 									</div>
 								</div>
 							</div>
-					<?}} else{ ?>
+					<?php }} else{ ?>
 						
 						<div class="alert alert-warning">
 						  <strong>Oops!</strong> No Courses are instructed by you!!
 						</div>
 						
 						
-		<?			}?>
+		<?php			}?>
 				</div>
 			</div>
 	

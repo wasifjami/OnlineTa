@@ -58,7 +58,7 @@
 						  <strong> <?php  echo $this->session->flashdata('conf');?> </strong>
 					</div>
                    	
-				  <? }
+				  <?php }
 				   else{ ?>
 					 <p> &nbsp;</p>
 					<?php } ?>
