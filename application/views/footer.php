@@ -16,6 +16,7 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src=<?php echo base_url("js/bootstrap.min.js")?>></script>
+    <script src=<?php echo base_url("js/custom.js")?>></script>
 
     <!-- Script to Activate the Carousel -->
     <script>

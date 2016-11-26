@@ -46,15 +46,11 @@
                  <div class="alert alert-success">
 	                <h3><?php echo $value->subject ?></h3>
 	                <p><?php echo $value->post?></p>
+	                 
 	                 <i style="padding-top: 15px" class="fa fa-thumbs-up" aria-hidden="true"></i>
 						<?php echo $value->votes ?>
 						
-	                <?php if($value->teacher_flag == 1){?>
-	                	<i class="fa fa-star" aria-hidden="true"></i>
-					<?php  }else{ ?>
-	                	<i class="fa fa-star-o" aria-hidden="true"></i>
-						
-				<?php 	} ?></br>
+	               </br>
 				
 				
 				
@@ -73,12 +69,25 @@
 			            	<input type="hidden" name="thread_id" value="<?php echo $value->id?>" />
           					<input type="submit"  name="submit" value=" Comment " class="btn btn-primary" />
 							<span style="float: right">
+								
+								Teachers Flag:
+							    <?php
+							    $url =site_url('thread/update_teacher_flag'); 
+							    if($value->teacher_flag == 1){
+							    	
+									$star = "<i id ='star'  onclick='flag_it(".$value->id.",".$value->teacher_flag.",'".$url."'".') class="fa fa-star-o fa-2x" style="color:gray" aria-hidden="true"></i>';
+								}else{
+									$star = "<i id ='star'  onclick='flag_it(".$value->id.",".$value->teacher_flag.",'".$url."'".') class="fa fa-star-o fa-2x" style="color:gray" aria-hidden="true"></i>';
+									
+								}	
+							  	?>
+								<?php echo $star;?>	                				
+								</br>
 								By: <a href=""> <?php echo $value->first_name  ." ". $value->last_name ?></a> <br>
 								<?php echo $value->created_on ?>
-						
 							</span>	          				
           			</form>
-					
+					<div class="row">  &nbsp;</div>
 	              </div>  
 	            <?php } ?>
             </div>

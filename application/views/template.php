@@ -28,7 +28,12 @@
     <![endif]-->
 
 </head>
-	
+	<script>
+		
+		var SITE_URL = <?php echo site_url()?>
+		
+		
+	</script>
 	
 	<body>
 		

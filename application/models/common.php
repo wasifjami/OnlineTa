@@ -95,5 +95,12 @@ class Common extends CI_Model {
 			return TRUE;
 		}
 	}
+	
+	
+	function update_flag($data, $thread_id){
+		if($this->db->where('id',$thread_id)->update('thread',$data)){
+			return TRUE;
+		}		
+	}
 
 }

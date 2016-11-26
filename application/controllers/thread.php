@@ -15,13 +15,12 @@ class Thread extends CI_Controller {
 	
 	
 	
+	
+	
 	public function course_thread($course_id = 0,$course_name="")
 	{
 		
-		
 		$result = $this->common->getAllThreadFromCourse($course_id);
-		
-		
 		
 		$data['threads'] = $result;
 		$data['course_id'] = $course_id;
@@ -70,6 +69,25 @@ class Thread extends CI_Controller {
 	}
 	
 	
+	public function update_teacher_flag()
+	{
+		$current_flag = $this->input->post('current_flag');
+		$thread_id = $this->input->post('thread_id');
+		
+		if($current_flag == 0){
+			$data['teacher_flag'] = 1; 
+		}else{
+			$data['teacher_flag'] = 0; 
+		}
+		
+		
+		if($this->common->update_flag($data, $thread_id)){
+			
+			 echo json_encode(array("status"=>"okk"));
+		}
+		
+		
+	}
 	
 
 
