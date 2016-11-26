@@ -26,7 +26,6 @@ class Thread extends CI_Controller {
 		$data['threads'] = $result;
 		$data['course_id'] = $course_id;
 		$data['course_name'] = urldecode($course_name);
-		
 		$data['view'] = "thread_view"; 
 
 		
@@ -51,7 +50,7 @@ class Thread extends CI_Controller {
 				'course_id' => $course_id,
 				'user_id' => $user_id,
 				'votes' => 0,
-				'teacher_flag' => 0
+				'teacher_flag' => 0,
 			); 
 			
 			if($this->common->save_question($data)){

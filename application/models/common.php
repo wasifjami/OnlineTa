@@ -31,9 +31,7 @@ class Common extends CI_Model {
 			return TRUE;
 		}
 	}
-	
-	
-	
+
 	function save_question($data) {
 
 		if ($this -> db -> insert('thread', $data)) {
@@ -41,14 +39,14 @@ class Common extends CI_Model {
 			return TRUE;
 		}
 	}
-	
-	
-	
+
 	function getAllThreadFromCourse($course_id) {
 
-		$result = $this -> db -> where('course_id', $course_id) -> get('thread') -> result();
+		$result = $this -> db -> select('thread.*, users.first_name,users.last_name,') -> join('users', 'users.id = thread.user_id') -> where('course_id', $course_id) -> order_by('created_on', 'desc') -> get('thread') -> result();
+		//var_dump($result);
 		return $result;
 	}
+
 
 	function getTeacherCourses() {
 
@@ -60,6 +58,42 @@ class Common extends CI_Model {
 			return FALSE;
 		}
 
+	}
+	
+	
+	function getThreadById($thread_id) {
+
+		$result = $this -> db ->select('thread.*, users.first_name,users.last_name,')-> join('users', 'users.id = thread.user_id')-> where('thread.id',$thread_id)->get('thread')->row();
+		//var_dump($result);
+		return $result;
+	}
+	
+	
+	
+	
+	function getCommentsByThreadId($thread_id) {
+
+		/*$sql = "select u.first_name, u.last_name, t.*, c.* 
+				from comments c 
+				join users u on (c.comment_user_id = u.id) 
+				join thread t on (c.thread_id = t.id) 
+				where t.id = $thread_id";*/
+				
+				
+				
+		$result = $this->db->query($sql)->result();
+		return $result; 			
+	
+	}
+	
+	
+	
+	function save_comment($data) {
+
+		if ($this -> db -> insert('comments', $data)) {
+
+			return TRUE;
+		}
 	}
 
 }

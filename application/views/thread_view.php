@@ -40,8 +40,9 @@
                    
                 
                 <?php 
-                
+                //var_dump($threads);die;
                 foreach ($threads as $key => $value) { ?>
+                	
                  <div class="alert alert-success">
 	                <h3><?php echo $value->subject ?></h3>
 	                <p><?php echo $value->post?></p>
@@ -53,21 +54,28 @@
 					<?php  }else{ ?>
 	                	<i class="fa fa-star-o" aria-hidden="true"></i>
 						
-				<?php 	} ?>
-					<a href=""> 
+				<?php 	} ?></br>
+				
+				
+				
+					<a href="<?php echo site_url('comment/all_comment/'.$value->id)?>"> 
 						<i class="fa fa-comments" aria-hidden="true">All Comments</i>
 					</a>
+				
+				
 					<div class="row">  &nbsp;</div>
-					 <form method="post" action="<?php echo site_url('thread/')?>">
+					 <form role="form" action="<?php echo site_url('comment/save_comment')?>" method="post">
           
 			            <div class="form-group">
 			              <label for="message-text" class="form-control-label">Comment here:</label>
-			              <textarea style="width: 50%" class="form-control"  name="question" id="message-text"></textarea>
+			              <textarea style="width: 50%" class="form-control"  name="comment" id="message-text"></textarea>
 			            </div>
+			            	<input type="hidden" name="thread_id" value="<?php echo $value->id?>" />
           					<input type="submit"  name="submit" value=" Comment " class="btn btn-primary" />
 							<span style="float: right">
-								By: <a href=""> Some Name</a> <br>
-								Date: DD/MM/YYYY
+								By: <a href=""> <?php echo $value->first_name  ." ". $value->last_name ?></a> <br>
+								<?php echo $value->created_on ?>
+						
 							</span>	          				
           			</form>
 					
