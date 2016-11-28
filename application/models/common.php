@@ -79,9 +79,14 @@ class Common extends CI_Model {
 				join thread t on (c.thread_id = t.id) 
 				where t.id = $thread_id";*/
 				
-				
+		$sql = "select c.*,u.first_name, u.last_name
+				from comments c 
+				join users u on (c.comment_user_id = u.id)
+				where thread_id = $thread_id";		
+	
 				
 		$result = $this->db->query($sql)->result();
+		//var_export($result); die;
 		return $result; 			
 	
 	}

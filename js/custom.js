@@ -1,7 +1,10 @@
 function flag_it(thread_id,current_flag,url){
 	
-	alert(BASE_URL );
+	id = "#star"+thread_id;
+
+      		 //alert(id);
    $.ajax({
+      		
       type: 'POST',
       datatype: 'JSON',
       url: url,
@@ -13,17 +16,15 @@ function flag_it(thread_id,current_flag,url){
          $('#info').html('<p>An error has occurred</p>');
       },
       success: function() {
-      	alert('okk');
       	if(current_flag == 1){
-      		className = 'fa-star-o';
-			style = 'color:gray';
-      		$('#id').attr("class",className);
-      		$('#id').attr("stype",style);
+      		$(id).removeClass('fa-star-o');
+      		$(id).addClass('fa-star');
+      		$(id).attr('onClick', "flag_it(" + thread_id + ",0,'"+url+"')");
+      		
       	}else{
-      		className = 'fa-star';
-			style = 'color:red';
-      		$('#id').attr("class",className);
-      		$('#id').attr("stype",style);
+      		$(id).removeClass('fa-star');
+      		$(id).addClass('fa-star-o');
+      		$(id).attr('onClick', "flag_it(" + thread_id + ",1,'"+url+"')");
       	}
       },
    });

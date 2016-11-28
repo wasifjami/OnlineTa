@@ -19,7 +19,7 @@ class Comment extends CI_Controller {
 		$data['thread'] = $this->common->getThreadById($thread_id);
 		//var_export($data); die;
 		
-		//$data['comments'] = $this->common->getCommentsByThreadId($thread_id);
+		$data['comments'] = $this->common->getCommentsByThreadId($thread_id);
 		
 		$data['thread_id'] = $thread_id;
 		$data['view'] = "comment_view"; 
