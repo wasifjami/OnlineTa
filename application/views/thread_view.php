@@ -10,7 +10,7 @@
                 <ol class="breadcrumb">
                     <li><a href="<?php echo site_url('profile')?>">Home</a>
                     </li>
-                    <li class="active">Sidebar Page</li>
+                    <li class="active">Threads</li>
                 </ol>
             </div>
         </div>
