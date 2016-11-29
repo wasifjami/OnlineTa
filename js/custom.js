@@ -17,13 +17,14 @@ function flag_it(thread_id,current_flag,url){
       },
       success: function() {
       	if(current_flag == 1){
-      		$(id).removeClass('fa-star-o');
-      		$(id).addClass('fa-star');
+      		$(id).removeClass('fa-star');
+      		$(id).addClass('fa-star-o');	
       		$(id).attr('onClick', "flag_it(" + thread_id + ",0,'"+url+"')");
       		
       	}else{
-      		$(id).removeClass('fa-star');
-      		$(id).addClass('fa-star-o');
+      	
+      		$(id).removeClass('fa-star-o');
+      		$(id).addClass('fa-star');
       		$(id).attr('onClick', "flag_it(" + thread_id + ",1,'"+url+"')");
       	}
       },
