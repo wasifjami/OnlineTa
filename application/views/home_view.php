@@ -12,18 +12,16 @@
             <div class="item active">
                 <div class="fill" style="background-image:url(<?php echo base_url('images/banner1.png')?>"></div>
                 <div class="carousel-caption">
-                    <h2></h2>
                 </div>
             </div>
             <div class="item">
-                <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide Two');"></div>
+                <div class="fill" style="background-image:url(<?php echo base_url('images/banner2.png')?>"></div>
                 <div class="carousel-caption">
                 </div>
             </div>
             <div class="item">
-                <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide Three');"></div>
+                <div class="fill" style="background-image:url(<?php echo base_url('images/banner3.png')?>"></div>
                 <div class="carousel-caption">
-                    <h2>Caption 3</h2>
                 </div>
             </div>
         </div>
