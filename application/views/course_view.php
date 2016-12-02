@@ -50,6 +50,8 @@
 				<h4><i class="fa fa-fw fa-gift"></i> Add new course</h4>
 			</div>
 			<div class="panel-body">
+				<?php if($_SESSION['user_type']==1){?>
+				
 				<form method="POST" action="<?php echo site_url('courses/addCourseByTeacher')?>">
 					<input type="text" placeholder="Course Code (e.g CSE115)" class="form-control" name="courseName" />
 					<br />
@@ -60,6 +62,14 @@
 					<input type="submit"  name="submit" value=" ADD " class="btn btn-success" />
 
 				</form>
+				<?php }else{?>
+				<form method="POST" action="<?php echo site_url('student/addCourseByStudent')?>">
+					<input type="text" placeholder="Course activation code (e.g xxxxxx)" class="form-control" name="courseCode" />
+					<br />
+					<input type="submit"  name="submit" value=" ADD " class="btn btn-success" />
+
+				</form>
+				<?php } ?>
 			</div>
 		</div>
 	</div>
