@@ -23,32 +23,30 @@ class Common extends CI_Model {
 		 }*/
 
 	}
+	
+	
+	function getCourseByActivationCode($data)
+	{
+			$this->db->from('course');
+			$this->db->where('activation_code',$data);
+			$query = $this->db->get()->row();
+			return $query;
+	}	
+	
+	
 
 	function save_course($data) {
 		
+		
 		if($_SESSION['user_type']==1){
 			if ($this -> db -> insert('course', $data)) {
-
-			return TRUE;
+				return TRUE;
 			}	
 		}
 		else if($_SESSION['user_type']==2){
-			$this->db->from('course');
-			$this->db->where('activation_code',$data['activation_code']);
-			$query = $this->db->get()->result();
-			
-			//var_dump($query);die;
-			foreach ($query as $key => $value) {
-				
-			}
-			$result = array( 	
-		  			'student_id'=> $data['student_id'], 	
-					'teacher_id' =>$query['teacher_id'],
-					'course_id' => $query['id'],
-			);
-			if ($this -> db -> insert('enrolled', $result)) {
-
-			return TRUE;
+		
+			if ($this -> db -> insert('enrolled', $data)) {
+				return TRUE;
 			}	
 		} 
 		
