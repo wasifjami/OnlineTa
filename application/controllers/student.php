@@ -18,6 +18,35 @@ class Student extends CI_Controller {
 		$data['view'] = "course_view";
 		$this -> load -> view('template', $data);
 	}
+	
+	
+	public function update_like_flag()
+	{
+		$comment_id = $this->input->post('comment_id');
+		$current_flag = $this->input->post('current_flag');
+		$userID = $_SESSION['id']; 
+		
+		
+		$data = array(
+			'like_comment_id' => $comment_id,
+			'like_user_id' => $userID,
+		);
+		
+		if($this->common->updateLikeFlag($data,$comment_id, $current_flag)){
+			var_dump('okk');
+		}else{
+			var_dump('failed');
+			
+		}
+		
+		
+				
+		
+		
+		//		var_dump($comment_id.' '.$current_flag);
+	}
+	
+	
 
 	public function addCourseByStudent() {
 

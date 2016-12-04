@@ -77,9 +77,9 @@
 								if($_SESSION['user_type'] ==1){
 								    if($value->teacher_flag == 1){
 								    	?>
-										<i id ='star<?php echo $value->id?>'  onclick="flag_it(<?php echo $value->id.','.$value->teacher_flag.',\''.$url.'\''?>)" class="fa fa-star fa-2x" style="color:gray;cursor:pointer" aria-hidden="true"></i>
+										<i id ='star<?php echo $value->id?>'  onclick="flag_it(<?php echo $value->id.','.$value->teacher_flag.',0'.',\''.$url.'\''?>)" class="fa fa-star fa-2x" style="color:gray;cursor:pointer" aria-hidden="true"></i>
 									<?php }else{?>
-										<i id ='star<?php echo $value->id?>'  onclick="flag_it(<?php echo $value->id.','.$value->teacher_flag.',\''.$url.'\''?>)" class="fa fa-star-o fa-2x" style="color:gray;cursor:pointer" aria-hidden="true"></i>
+										<i id ='star<?php echo $value->id?>'  onclick="flag_it(<?php echo $value->id.','.$value->teacher_flag.',0'.',\''.$url.'\''?>)" class="fa fa-star-o fa-2x" style="color:gray;cursor:pointer" aria-hidden="true"></i>
 										
 								<?php }
 								

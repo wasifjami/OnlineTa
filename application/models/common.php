@@ -126,5 +126,31 @@ class Common extends CI_Model {
 			return TRUE;
 		}
 	}
+	
+	
+	
+	function updateLikeFlag($data, $comment_id, $current_flag){
+		if($this->db->insert('likes', $data)){
+				
+				
+			if($current_flag == 1){
+				$data = array(
+					'comment_votes' => 'comment_votes'+1
+				);
+			}else{
+				$data = array(
+					'comment_votes' => 'comment_votes'-1
+				);
+			}
+				$this->db->where('id', $comment_id);
+				if($this->db->update('comments', $data)){
+					return TRUE;
+				}else{
+					return FALSE;
+				}
+		}
+		return FALSE;
+		
+	}
 
 }
