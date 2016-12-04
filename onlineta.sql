@@ -1,13 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.2.11
+-- version 3.4.5
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: Dec 02, 2016 at 09:08 AM
--- Server version: 5.6.21
--- PHP Version: 5.5.19
+-- Host: localhost
+-- Generation Time: Dec 04, 2016 at 07:04 PM
+-- Server version: 5.5.16
+-- PHP Version: 5.3.8
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
@@ -27,26 +27,28 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `comments` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `comment_user_id` int(11) NOT NULL,
   `thread_id` int(11) NOT NULL,
   `comment` varchar(250) NOT NULL,
   `comment_votes` int(4) NOT NULL,
   `comment_teacher_flag` tinyint(1) NOT NULL,
-  `comment_created_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+  `comment_created_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
 -- Dumping data for table `comments`
 --
 
 INSERT INTO `comments` (`id`, `comment_user_id`, `thread_id`, `comment`, `comment_votes`, `comment_teacher_flag`, `comment_created_on`) VALUES
-(1, 102, 12, '654de', 0, 0, '2016-11-26 11:42:07'),
-(2, 102, 12, 'SDvasfdbv', 0, 0, '2016-11-26 11:48:50'),
-(3, 102, 12, 'xcbscv nbcvn', 0, 0, '2016-11-26 11:49:16'),
-(4, 102, 12, 'fdgnbfsdgncv  vcvcxg fsg cv ', 0, 0, '2016-11-26 11:49:24'),
-(5, 102, 15, 'this is a comment', 0, 0, '2016-11-26 12:56:38'),
-(6, 102, 15, 'kjhfjmkfvhb,mj', 0, 0, '2016-11-26 12:59:03');
+(1, 102, 12, '654de', 0, 0, '2016-12-04 17:53:29'),
+(2, 102, 12, 'SDvasfdbv', 0, 0, '2016-12-04 17:53:29'),
+(3, 102, 12, 'xcbscv nbcvn', 0, 0, '2016-12-04 17:53:29'),
+(4, 102, 12, 'fdgnbfsdgncv  vcvcxg fsg cv ', 0, 0, '2016-12-04 17:53:29'),
+(5, 102, 15, 'this is a comment', 0, 0, '2016-12-04 17:53:29'),
+(6, 102, 15, 'kjhfjmkfvhb,mj', 0, 0, '2016-12-04 17:53:29'),
+(7, 105, 15, 'Okay. fine', -1, 0, '2016-12-04 17:57:48');
 
 -- --------------------------------------------------------
 
@@ -55,13 +57,14 @@ INSERT INTO `comments` (`id`, `comment_user_id`, `thread_id`, `comment`, `commen
 --
 
 CREATE TABLE IF NOT EXISTS `course` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `teacher_id` varchar(11) NOT NULL,
   `course_name` varchar(25) NOT NULL,
   `course_title` varchar(50) NOT NULL,
   `description` varchar(255) NOT NULL,
-  `activation_code` varchar(50) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+  `activation_code` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 --
 -- Dumping data for table `course`
@@ -79,13 +82,14 @@ INSERT INTO `course` (`id`, `teacher_id`, `course_name`, `course_title`, `descri
 --
 
 CREATE TABLE IF NOT EXISTS `degree` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
   `college` varchar(25) DEFAULT NULL,
   `honors` int(11) DEFAULT NULL,
   `masters` int(11) DEFAULT NULL,
-  `phd` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `phd` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -94,11 +98,20 @@ CREATE TABLE IF NOT EXISTS `degree` (
 --
 
 CREATE TABLE IF NOT EXISTS `enrolled` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `course_id` varchar(10) NOT NULL,
   `teacher_id` varchar(10) NOT NULL,
-  `student_id` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `student_id` varchar(10) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `enrolled`
+--
+
+INSERT INTO `enrolled` (`id`, `course_id`, `teacher_id`, `student_id`) VALUES
+(1, '9', '102', '105'),
+(2, '9', '102', '105');
 
 -- --------------------------------------------------------
 
@@ -107,14 +120,45 @@ CREATE TABLE IF NOT EXISTS `enrolled` (
 --
 
 CREATE TABLE IF NOT EXISTS `institution` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
   `initial` varchar(10) NOT NULL,
   `location` varchar(100) NOT NULL,
   `website` varchar(50) NOT NULL,
   `dept` varchar(30) NOT NULL,
-  `user_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `user_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `likes`
+--
+
+CREATE TABLE IF NOT EXISTS `likes` (
+  `id` int(5) NOT NULL AUTO_INCREMENT,
+  `like_user_id` int(5) NOT NULL,
+  `like_comment_id` int(5) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
+
+--
+-- Dumping data for table `likes`
+--
+
+INSERT INTO `likes` (`id`, `like_user_id`, `like_comment_id`) VALUES
+(1, 7, 7),
+(2, 102, 7),
+(3, 102, 7),
+(4, 102, 7),
+(5, 102, 7),
+(6, 102, 7),
+(7, 102, 6),
+(8, 102, 7),
+(9, 102, 7),
+(10, 102, 7),
+(11, 102, 7);
 
 -- --------------------------------------------------------
 
@@ -123,15 +167,16 @@ CREATE TABLE IF NOT EXISTS `institution` (
 --
 
 CREATE TABLE IF NOT EXISTS `thread` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
   `course_id` varchar(20) NOT NULL,
   `subject` varchar(255) NOT NULL,
   `post` varchar(500) NOT NULL,
   `votes` int(11) NOT NULL,
   `teacher_flag` int(11) NOT NULL,
-  `created_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
+  `created_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
 
 --
 -- Dumping data for table `thread`
@@ -152,7 +197,7 @@ INSERT INTO `thread` (`id`, `user_id`, `course_id`, `subject`, `post`, `votes`, 
 (12, 102, '9', 'desc check', 'sdvfsvsfabvsf', 0, 0, '2016-11-26 10:55:53'),
 (13, 102, '9', 'Who can illustrate how to delete and re-enter my account super administrator in phpmyadmin into my sql table?', 'If you still want to delete it then it is always better to use higher level Q2A functions than using plain SQL as they take care of things that just one DELETE statement won''t (e.g., what happens with posts of that user, votes, etc). I''d recommend just running this', 0, 0, '2016-11-26 10:23:01'),
 (14, 102, '9', 'Who can illustrate how to delete and re-enter my account super administrator in phpmyadmin into my sql table?', 'Who can illustrate how to delete and re-enter my account super administrator in phpmyadmin into my sql table?Who can illustrate how to delete and re-enter my account super administrator in phpmyadmin into my sql table?Who can illustrate how to delete and re-enter my account super administrator in phpmyadmin into my sql table?', 0, 0, '2016-11-26 12:51:10'),
-(15, 102, '9', 'Who can illustrate how to delete and re-enter my account super administrator in phpmyadmin into my sql table?', 'Who can illustrate how to delete and re-enter my account super administrator in phpmyadmin into my sql table?Who can illustrate how to delete and re-enter my account super administrator in phpmyadmin into my sql table?Who can illustrate how to delete and re-enter my account super administrator in phpmyadmin into my sql table?', 0, 0, '2016-11-26 12:51:20');
+(15, 102, '9', 'Who can illustrate how to delete and re-enter my account super administrator in phpmyadmin into my sql table?', 'Who can illustrate how to delete and re-enter my account super administrator in phpmyadmin into my sql table?Who can illustrate how to delete and re-enter my account super administrator in phpmyadmin into my sql table?Who can illustrate how to delete and re-enter my account super administrator in phpmyadmin into my sql table?', 0, 0, '2016-12-04 16:52:13');
 
 -- --------------------------------------------------------
 
@@ -161,7 +206,7 @@ INSERT INTO `thread` (`id`, `user_id`, `course_id`, `subject`, `post`, `votes`, 
 --
 
 CREATE TABLE IF NOT EXISTS `users` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `first_name` varchar(25) NOT NULL,
   `last_name` varchar(25) NOT NULL,
   `birth_date` date DEFAULT NULL,
@@ -175,8 +220,9 @@ CREATE TABLE IF NOT EXISTS `users` (
   `sequrity_question_answer` varchar(40) NOT NULL,
   `user_type` text NOT NULL,
   `is_active` enum('yes','no') NOT NULL,
-  `created_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=105 DEFAULT CHARSET=latin1;
+  `created_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=106 ;
 
 --
 -- Dumping data for table `users`
@@ -187,93 +233,9 @@ INSERT INTO `users` (`id`, `first_name`, `last_name`, `birth_date`, `gender`, `u
 (101, '', '', '0000-00-00', '', 'adf', 'adf', '016111111', 'adnan.firoze@northsouth.edu', '', '', '', 't', 'yes', '2016-11-06 14:24:42'),
 (102, 'Admin', 'Admin', '0000-00-00', 'male', 'admin', '21232f297a57a5a743894a0e4a801fc3', '01737372722', 'admin@admin.com', 'admin', '', '', '1', 'yes', '0000-00-00 00:00:00'),
 (103, 'Shazzad', 'Hossain', '0000-00-00', 'male', 'szz', 'f94b1022296fd60bd1a8600bcd26dcd4', '01744455', 'shazzad.hossain@nsu.edu', 'Assistance Professor', '', '', '1', 'yes', '0000-00-00 00:00:00'),
-(104, 'Student', 'sss', '0000-00-00', 'male', 'student', 'cd73502828457d15655bbd7a63fb0bc8', '01744444', 'student@student.com', 'student', '', '', '2', 'yes', '0000-00-00 00:00:00');
+(104, 'Student', 'sss', '0000-00-00', 'male', 'student', 'cd73502828457d15655bbd7a63fb0bc8', '01744444', 'student@student.com', 'student', '', '', '2', 'yes', '0000-00-00 00:00:00'),
+(105, 'student', 'student', '0000-00-00', 'male', 'student', 'cd73502828457d15655bbd7a63fb0bc8', '123', 'student@student.com', 'student', '', '', '2', 'yes', '0000-00-00 00:00:00');
 
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `comments`
---
-ALTER TABLE `comments`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `course`
---
-ALTER TABLE `course`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `degree`
---
-ALTER TABLE `degree`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `enrolled`
---
-ALTER TABLE `enrolled`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `institution`
---
-ALTER TABLE `institution`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `thread`
---
-ALTER TABLE `thread`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `users`
---
-ALTER TABLE `users`
- ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `comments`
---
-ALTER TABLE `comments`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
---
--- AUTO_INCREMENT for table `course`
---
-ALTER TABLE `course`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
---
--- AUTO_INCREMENT for table `degree`
---
-ALTER TABLE `degree`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `enrolled`
---
-ALTER TABLE `enrolled`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `institution`
---
-ALTER TABLE `institution`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `thread`
---
-ALTER TABLE `thread`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=16;
---
--- AUTO_INCREMENT for table `users`
---
-ALTER TABLE `users`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=105;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
