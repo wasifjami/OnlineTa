@@ -15,9 +15,14 @@ class Courses extends CI_Controller {
 	{
 		
 		
-		$result = $this->common->getTeacherCourses();
-		
-		$data['courses'] = $result;
+		if($_SESSION['user_type'] == 1){
+			$result = $this->common->getTeacherCourses();
+			$data['courses'] = $result;
+		}else if($_SESSION['user_type'] == 2 ){
+			
+			$result = $this->common->getStudentsEnrolledCourses();
+			$data['courses'] = $result;
+		}
 			 
 		$data['view'] = "course_view"; 
 		$this->load->view('template',$data);

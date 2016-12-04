@@ -72,16 +72,30 @@
 								
 								Teachers Flag:
 							    <?php
-							    $url =site_url('thread/update_teacher_flag'); 
-							    if($value->teacher_flag == 1){
-							    	?>
-									<i id ='star<?php echo $value->id?>'  onclick="flag_it(<?php echo $value->id.','.$value->teacher_flag.',\''.$url.'\''?>)" class="fa fa-star fa-2x" style="color:gray;cursor:pointer" aria-hidden="true"></i>
-								<?php }else{?>
-									<i id ='star<?php echo $value->id?>'  onclick="flag_it(<?php echo $value->id.','.$value->teacher_flag.',\''.$url.'\''?>)" class="fa fa-star-o fa-2x" style="color:gray;cursor:pointer" aria-hidden="true"></i>
+							    $url =site_url('thread/update_teacher_flag');
+								
+								if($_SESSION['user_type'] ==1){
+								    if($value->teacher_flag == 1){
+								    	?>
+										<i id ='star<?php echo $value->id?>'  onclick="flag_it(<?php echo $value->id.','.$value->teacher_flag.',\''.$url.'\''?>)" class="fa fa-star fa-2x" style="color:gray;cursor:pointer" aria-hidden="true"></i>
+									<?php }else{?>
+										<i id ='star<?php echo $value->id?>'  onclick="flag_it(<?php echo $value->id.','.$value->teacher_flag.',\''.$url.'\''?>)" class="fa fa-star-o fa-2x" style="color:gray;cursor:pointer" aria-hidden="true"></i>
+										
+								<?php }
+								
+								}else if($_SESSION['user_type'] ==2){
+								    if($value->teacher_flag == 1){
+								    	?>
+										<i id ='star<?php echo $value->id?>'  class="fa fa-star fa-2x" style="color:gray;" aria-hidden="true"></i>
+									<?php }else{?>
+										<i id ='star<?php echo $value->id?>'  class="fa fa-star-o fa-2x" style="color:gray;" aria-hidden="true"></i>
+										
+								<?php }
+								}
+								
 									
-						<?php		}	
-							  	?>
-									                				
+								  	?>
+										                				
 								</br>
 								By: <a href=""> <?php echo $value->first_name  ." ". $value->last_name ?></a> <br>
 								<?php echo $value->created_on ?>
