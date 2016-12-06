@@ -7,6 +7,7 @@ function flag_it(thread_id,current_flag,thread_comment,url){
    		comment_id = thread_id;
    	   	id = "#like"+comment_id;
    	   	thumb = "#thumb"+comment_id;
+   	   	point = "#points"+ comment_id;
    	   	
    	     //alert(thumb);
 	   $.ajax({
@@ -25,13 +26,14 @@ function flag_it(thread_id,current_flag,thread_comment,url){
 	      	if(current_flag == 1){
 	      		
 	      		val = parseInt($(thumb).html()) - 1;
+	      		$(point).html('Points: '+val*10);
 	      		$(id).attr('onClick', "flag_it(" + thread_id + ",0,1,'"+url+"')");
 	      		$(thumb).html(val);
 	      		
 	      	}else{
 	      		
 	      		val = parseInt($(thumb).html()) + 1;
-	      	
+	      		$(point).html('Points: '+val*10);
 	      		$(id).attr('onClick', "flag_it(" + thread_id + ",1,1,'"+url+"')");
 	      		$(thumb).html(val);
 	      	}

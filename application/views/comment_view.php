@@ -85,13 +85,18 @@
 					<a class="pull-left" href="#"> <img class="media-object" src="http://placehold.it/64x64" alt=""> </a>
 					<div class="media-body">
 						<h4 class="media-heading"><?php echo $value->first_name.' '.$value->last_name?><small> <?php echo $value->comment_created_on?> </small></h4>
+						
 						<?php echo $value->comment;
 						 $url = site_url('Student/update_like_flag');
 						 ?>
 <!--					<a onclick="flag_it(<?php echo $value->id.','.$value->teacher_flag.',1'.',\''.$url.'\''?>)" style="cursor: pointer"> --></a>	
+
 					<a id="like<?php echo $value->id?>"  onclick="flag_it(<?php echo $value->id.','.'0'.',1'.',\''.$url.'\''?>)" style="cursor: pointer">	
 						<i id="thumb<?php echo $value->id?>" style="float:right; padding-top: 15px" class="fa fa-thumbs-up" aria-hidden="true"><?php echo $value->comment_votes ?></i>
-					</a>	
+					</a>
+					
+										<br><br>  <span id="points<?php echo $value->id?>" style="float:right"> Points : <?php echo $value->comment_votes*10 ?></span>
+	
 					</div>
 				</div>
 
