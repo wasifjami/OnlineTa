@@ -89,8 +89,8 @@
 						 $url = site_url('Student/update_like_flag');
 						 ?>
 <!--					<a onclick="flag_it(<?php echo $value->id.','.$value->teacher_flag.',1'.',\''.$url.'\''?>)" style="cursor: pointer"> --></a>	
-					<a onclick="flag_it(<?php echo $value->id.','.'0'.',1'.',\''.$url.'\''?>)" style="cursor: pointer">	
-						<i style="float:right; padding-top: 15px" class="fa fa-thumbs-up" aria-hidden="true"><?php echo "0" // $value->votes ?></i>
+					<a id="like<?php echo $value->id?>"  onclick="flag_it(<?php echo $value->id.','.'0'.',1'.',\''.$url.'\''?>)" style="cursor: pointer">	
+						<i id="thumb<?php echo $value->id?>" style="float:right; padding-top: 15px" class="fa fa-thumbs-up" aria-hidden="true"><?php echo $value->comment_votes ?></i>
 					</a>	
 					</div>
 				</div>

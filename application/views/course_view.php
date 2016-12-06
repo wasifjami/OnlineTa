@@ -15,7 +15,7 @@
 				   else{ ?>
 					 <p> &nbsp;</p>
 					<?php } ?>
-			<?php //var_dump($courses); die;?>
+			<?php //var_dump($courses); die; ?>
 		</div>
 	</div>
 
@@ -37,11 +37,12 @@
                    	
                    	
                    	<div class="alert alert-success">
-						  <strong><?php  echo $this->session->flashdata('conf'); ?></strong>
+						  <strong><?php  echo $this -> session -> flashdata('conf'); ?></strong>
 						</div>
                    	
 				<?php   }
-				   else{ ?>
+						else{
+ ?>
 					 <p> &nbsp;</p>
 					<?php } ?>
 		<div class="panel panel-default">
@@ -62,7 +63,7 @@
 					<input type="submit"  name="submit" value=" ADD " class="btn btn-success" />
 
 				</form>
-				<?php }else{?>
+				<?php }else{ ?>
 				<form method="POST" action="<?php echo site_url('student/addCourseByStudent')?>">
 					<input type="text" placeholder="Course activation code (e.g xxxxxx)" class="form-control" name="courseCode" />
 					<br />
@@ -108,6 +109,11 @@
 									<div class="panel-body">
 										<h4><?php echo $value->course_name?></h4>
 										<h5><b><?php echo $value->course_title?></b></h5>
+										
+										<h5><b><?php if($_SESSION['user_type'] == 1 ) echo"Activation Code : ". $value->activation_code?></b></h5>
+										
+										
+										
 										<p>
 											<?php echo $value->description?>
 										</p>
@@ -122,7 +128,7 @@
 						</div>
 						
 						
-		<?php			}?>
+		<?php			} ?>
 				</div>
 			</div>
 	

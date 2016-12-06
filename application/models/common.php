@@ -74,8 +74,8 @@ class Common extends CI_Model {
 	}
 
 	function getStudentsEnrolledCourses() {
-
-		$sql = "select c.* from course c join enrolled e on c.id=e.course_id where e.student_id = 105";
+		$id = $_SESSION['id'];
+		$sql = "select c.* from course c join enrolled e on c.id=e.course_id where e.student_id = $id";
 
 		$result = $this -> db -> query($sql) -> result();
 		if (!empty($result)) {
@@ -133,17 +133,13 @@ class Common extends CI_Model {
 		if($this->db->insert('likes', $data)){
 				
 				
+			$this->db->where('id', $comment_id);
 			if($current_flag == 1){
-				$data = array(
-					'comment_votes' => 'comment_votes'+1
-				);
+				$this->db->set('comment_votes', 'comment_votes-1', FALSE);      
 			}else{
-				$data = array(
-					'comment_votes' => 'comment_votes'-1
-				);
+				$this->db->set('comment_votes', 'comment_votes+1', FALSE) ;     
 			}
-				$this->db->where('id', $comment_id);
-				if($this->db->update('comments', $data)){
+				if($this->db->update('comments')){
 					return TRUE;
 				}else{
 					return FALSE;

@@ -23,7 +23,7 @@ class Courses extends CI_Controller {
 			$result = $this->common->getStudentsEnrolledCourses();
 			$data['courses'] = $result;
 		}
-			 
+	//	var_dump($data); die;	 
 		$data['view'] = "course_view"; 
 		$this->load->view('template',$data);
 	}
